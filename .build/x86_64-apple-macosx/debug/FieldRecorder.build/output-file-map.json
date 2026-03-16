@@ -1,0 +1,54 @@
+{
+  "": {
+    "swift-dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/master.swiftdeps"
+  },
+  "/Users/chrisholmes/Projects/FieldRecorder/Sources/AudioRecorder.swift": {
+    "dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder.d",
+    "object": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder.swift.o",
+    "swiftmodule": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder~partial.swiftmodule",
+    "swift-dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder.swiftdeps",
+    "diagnostics": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder.dia"
+  },
+  "/Users/chrisholmes/Projects/FieldRecorder/Sources/ContentView.swift": {
+    "dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView.d",
+    "object": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView.swift.o",
+    "swiftmodule": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView.swiftdeps",
+    "diagnostics": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView.dia"
+  },
+  "/Users/chrisholmes/Projects/FieldRecorder/Sources/FieldRecorderApp.swift": {
+    "dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp.d",
+    "object": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp.swift.o",
+    "swiftmodule": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp.swiftdeps",
+    "diagnostics": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp.dia"
+  },
+  "/Users/chrisholmes/Projects/FieldRecorder/Sources/LocationManager.swift": {
+    "dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager.d",
+    "object": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager.swift.o",
+    "swiftmodule": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager.swiftdeps",
+    "diagnostics": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager.dia"
+  },
+  "/Users/chrisholmes/Projects/FieldRecorder/Sources/RecordingsListView.swift": {
+    "dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView.d",
+    "object": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView.swift.o",
+    "swiftmodule": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView~partial.swiftmodule",
+    "swift-dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView.swiftdeps",
+    "diagnostics": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView.dia"
+  },
+  "/Users/chrisholmes/Projects/FieldRecorder/Sources/UploadService.swift": {
+    "dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService.d",
+    "object": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService.swift.o",
+    "swiftmodule": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService~partial.swiftmodule",
+    "swift-dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService.swiftdeps",
+    "diagnostics": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService.dia"
+  },
+  "/Users/chrisholmes/Projects/FieldRecorder/Sources/UploadView.swift": {
+    "dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView.d",
+    "object": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView.swift.o",
+    "swiftmodule": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView~partial.swiftmodule",
+    "swift-dependencies": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView.swiftdeps",
+    "diagnostics": "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView.dia"
+  }
+}

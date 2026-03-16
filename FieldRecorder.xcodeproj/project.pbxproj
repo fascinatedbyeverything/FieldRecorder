@@ -1,0 +1,225 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F10001 /* FieldRecorderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20001; };
+		F10002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20002; };
+		F10003 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20003; };
+		F10004 /* UploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20004; };
+		F10005 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20005; };
+		F10006 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20006; };
+		F10007 /* RecordingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20007; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F20001 /* FieldRecorderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldRecorderApp.swift; sourceTree = "<group>"; };
+		F20002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F20003 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		F20004 /* UploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadService.swift; sourceTree = "<group>"; };
+		F20005 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		F20006 /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
+		F20007 /* RecordingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsListView.swift; sourceTree = "<group>"; };
+		F30001 /* FieldRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		F40001 = {
+			isa = PBXGroup;
+			children = (
+				F40002 /* Sources */,
+				F40003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F40002 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F20001 /* FieldRecorderApp.swift */,
+				F20002 /* ContentView.swift */,
+				F20003 /* AudioRecorder.swift */,
+				F20004 /* UploadService.swift */,
+				F20005 /* LocationManager.swift */,
+				F20006 /* UploadView.swift */,
+				F20007 /* RecordingsListView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		F40003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F30001 /* FieldRecorder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F50001 /* FieldRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F70001;
+			buildPhases = (
+				F60001 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FieldRecorder;
+			productName = FieldRecorder;
+			productReference = F30001;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F80001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = F70002;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base);
+			mainGroup = F40001;
+			productRefGroup = F40003;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F50001 /* FieldRecorder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F60001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F10001 /* FieldRecorderApp.swift in Sources */,
+				F10002 /* ContentView.swift in Sources */,
+				F10003 /* AudioRecorder.swift in Sources */,
+				F10004 /* UploadService.swift in Sources */,
+				F10005 /* LocationManager.swift in Sources */,
+				F10006 /* UploadView.swift in Sources */,
+				F10007 /* RecordingsListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F90001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Field Recorder";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Tag recordings with your current location";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record field audio for uploading to your collection";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fieldrecorder.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F90002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Field Recorder";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Tag recordings with your current location";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record field audio for uploading to your collection";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fieldrecorder.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F90003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F90004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F70001 /* Build configuration list for PBXNativeTarget "FieldRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F90001 /* Debug */,
+				F90002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F70002 /* Build configuration list for PBXProject "FieldRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F90003 /* Debug */,
+				F90004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = F80001 /* Project object */;
+}

@@ -1,0 +1,81 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "FieldRecorder-x86_64-apple-macosx15.0-debug.exe": ["<FieldRecorder-x86_64-apple-macosx15.0-debug.exe>"]
+  "FieldRecorder-x86_64-apple-macosx15.0-debug.module": ["<FieldRecorder-x86_64-apple-macosx15.0-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<FieldRecorder-x86_64-apple-macosx15.0-debug.exe>","<FieldRecorder-x86_64-apple-macosx15.0-debug.module>"]
+  "test": ["<FieldRecorder-x86_64-apple-macosx15.0-debug.exe>","<FieldRecorder-x86_64-apple-macosx15.0-debug.module>"]
+default: "main"
+nodes:
+  "/Users/chrisholmes/Projects/FieldRecorder/Sources/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder":
+    is-mutated: true
+commands:
+  "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder-entitlement.plist"]
+    description: "Write auxiliary file /Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder-entitlement.plist"
+
+  "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/chrisholmes/Projects/FieldRecorder/Sources/AudioRecorder.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/ContentView.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/FieldRecorderApp.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/LocationManager.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/RecordingsListView.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/UploadService.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/UploadView.swift"]
+    outputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/sources"]
+    description: "Write auxiliary file /Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/sources"
+
+  "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView.swift.o"]
+    outputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.product/Objects.LinkFileList"
+
+  "/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<FieldRecorder-x86_64-apple-macosx15.0-debug.exe>":
+    tool: phony
+    inputs: ["<FieldRecorder-x86_64-apple-macosx15.0-debug.exe-CodeSigning>"]
+    outputs: ["<FieldRecorder-x86_64-apple-macosx15.0-debug.exe>"]
+
+  "<FieldRecorder-x86_64-apple-macosx15.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/Modules/FieldRecorder.swiftmodule"]
+    outputs: ["<FieldRecorder-x86_64-apple-macosx15.0-debug.module>"]
+
+  "C.FieldRecorder-x86_64-apple-macosx15.0-debug.exe":
+    tool: shell
+    inputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.product/Objects.LinkFileList"]
+    outputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder"]
+    description: "Linking ./.build/x86_64-apple-macosx/debug/FieldRecorder"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-L","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug","-o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder","-module-name","FieldRecorder","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-alias","-Xlinker","_FieldRecorder_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/usr/lib/swift-5.5/macosx","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/usr/lib/swift-6.2/macosx","-target","x86_64-apple-macosx10.13","-Xlinker","-add_ast_path","-Xlinker","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/Modules/FieldRecorder.swiftmodule","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g"]
+
+  "C.FieldRecorder-x86_64-apple-macosx15.0-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder-entitlement.plist"]
+    outputs: ["<FieldRecorder-x86_64-apple-macosx15.0-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/x86_64-apple-macosx/debug/FieldRecorder"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder-entitlement.plist","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder"]
+
+  "C.FieldRecorder-x86_64-apple-macosx15.0-debug.module":
+    tool: shell
+    inputs: ["/Users/chrisholmes/Projects/FieldRecorder/Sources/AudioRecorder.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/ContentView.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/FieldRecorderApp.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/LocationManager.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/RecordingsListView.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/UploadService.swift","/Users/chrisholmes/Projects/FieldRecorder/Sources/UploadView.swift","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/sources"]
+    outputs: ["/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/AudioRecorder.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/ContentView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/FieldRecorderApp.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/LocationManager.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/RecordingsListView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadService.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/UploadView.swift.o","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/Modules/FieldRecorder.swiftmodule"]
+    description: "Compiling Swift Module 'FieldRecorder' (7 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","FieldRecorder","-emit-dependencies","-emit-module","-emit-module-path","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/Modules/FieldRecorder.swiftmodule","-output-file-map","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/output-file-map.json","-incremental","-c","@/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/FieldRecorder.build/sources","-I","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/Modules","-target","x86_64-apple-macosx10.13","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j16","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/chrisholmes/Projects/FieldRecorder/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","FieldRecorder_main","-swift-version","5","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","fieldrecorder"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/chrisholmes/Projects/FieldRecorder/Sources/","/Users/chrisholmes/Projects/FieldRecorder/Package.swift","/Users/chrisholmes/Projects/FieldRecorder/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
