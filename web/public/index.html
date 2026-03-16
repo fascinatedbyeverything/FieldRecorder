@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Recorder</title>
+  <meta
+    name="description"
+    content="Browse field recordings on a global map, filter by place and type, and upload your own ambient audio."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="map"></div>
+  <div class="map-wash" aria-hidden="true"></div>
+
+  <button id="panel-toggle" type="button" aria-controls="panel" aria-expanded="true" aria-label="Toggle search panel">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M10.5 4.5a6 6 0 1 0 0 12a6 6 0 0 0 0-12ZM20 20l-4.2-4.2"/>
+    </svg>
+  </button>
+
+  <aside id="panel" class="panel-open" aria-label="Browse recordings">
+    <div id="panel-header">
+      <div class="brand-row">
+        <div>
+          <div class="eyebrow">Field Recorder</div>
+          <h1>Map the world by sound.</h1>
+        </div>
+        <button id="panel-close" type="button" class="icon-btn" aria-label="Close search panel">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p class="panel-intro">
+        Search by species, atmosphere, and distance. Pin the map for a local radius, then blend
+        public archives with your own uploads.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-label">Sources</span>
+          <strong id="provider-count">11</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Radius</span>
+          <strong><span id="radius-value">100</span> km</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Last Search</span>
+          <strong id="result-count-stat">Idle</strong>
+        </div>
+      </div>
+      <div class="panel-toolbar">
+        <button id="upload-open" type="button" class="btn btn-primary">Upload</button>
+        <button id="clear-filters" type="button" class="btn btn-secondary">Reset</button>
+      </div>
+    </div>
+
+    <div id="panel-content">
+      <section class="section-block">
+        <div class="section-heading">
+          <span class="section-kicker">Curated scenes</span>
+          <h2>Jump into a soundscape</h2>
+        </div>
+        <div class="scene-grid" id="scene-chips">
+          <button class="scene-chip" type="button" data-scene='{"q":"rainforest ambient","min_duration":"300"}'>
+            <span class="scene-chip-name">Amazon Rainforest</span>
+            <span class="scene-chip-meta">Dense canopy, long listens</span>
+          </button>
+          <button class="scene-chip" type="button" data-scene='{"q":"ocean waves","min_duration":"300"}'>
+            <span class="scene-chip-name">Ocean Waves</span>
+            <span class="scene-chip-meta">Open shore, extended drift</span>
+          </button>
+          <button class="scene-chip" type="button" data-scene='{"q":"whale song","min_duration":"60"}'>
+            <span class="scene-chip-name">Whale Song</span>
+            <span class="scene-chip-meta">Low frequency, open water</span>
+          </button>
+          <button class="scene-chip" type="button" data-scene='{"q":"thunderstorm rain","min_duration":"120"}'>
+            <span class="scene-chip-name">Thunderstorm</span>
+            <span class="scene-chip-meta">Storm cells and rain bands</span>
+          </button>
+          <button class="scene-chip" type="button" data-scene='{"q":"dawn chorus birds","min_duration":"300"}'>
+            <span class="scene-chip-name">Dawn Chorus</span>
+            <span class="scene-chip-meta">Layered birds at first light</span>
+          </button>
+          <button class="scene-chip" type="button" data-scene='{"q":"night forest insects","min_duration":"300"}'>
+            <span class="scene-chip-name">Forest at Night</span>
+            <span class="scene-chip-meta">Insects, hush, low movement</span>
+          </button>
+          <button class="scene-chip" type="button" data-scene='{"q":"river stream water","min_duration":"120"}'>
+            <span class="scene-chip-name">River and Streams</span>
+            <span class="scene-chip-meta">Current, rocks, steady flow</span>
+          </button>
+          <button class="scene-chip" type="button" data-scene='{"q":"city street urban","min_duration":"120"}'>
+            <span class="scene-chip-name">City Streets</span>
+            <span class="scene-chip-meta">Transit, voices, traffic wash</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <span class="section-kicker">Query</span>
+          <h2>Search the atlas</h2>
+        </div>
+        <label class="input-label" for="search-input">Keywords or species</label>
+        <div class="search-row">
+          <input
+            id="search-input"
+            type="text"
+            placeholder="whales, cicadas, thunder, fog horn..."
+            autocomplete="off"
+          >
+          <button id="search-btn" type="button" class="btn btn-primary btn-search">Search</button>
+        </div>
+        <div id="active-filters" class="active-filters"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <span class="section-kicker">Geo filter</span>
+          <h2>Anchor a place</h2>
+        </div>
+        <label class="input-label" for="location-input">Place name</label>
+        <div class="search-row location-row">
+          <input id="location-input" type="text" placeholder="Halifax, Nova Scotia" autocomplete="off">
+          <button id="geocode-btn" type="button" class="btn btn-secondary">Locate</button>
+        </div>
+        <div class="location-toolbar">
+          <button id="use-current-location" type="button" class="chip chip-action">Use my location</button>
+          <button id="clear-location" type="button" class="chip chip-action">Clear pin</button>
+        </div>
+        <div class="slider-stack">
+          <div class="slider-header">
+            <span>Search radius</span>
+            <strong><span id="radius-readout">100</span> km</strong>
+          </div>
+          <input id="radius-slider" type="range" min="10" max="500" value="100" step="10">
+        </div>
+        <p id="location-hint" class="hint-text">Click the map to drop a radius pin.</p>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <span class="section-kicker">Type</span>
+          <h2>Shape the mix</h2>
+        </div>
+        <div class="chip-group" id="type-chips"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <span class="section-kicker">Duration</span>
+          <h2>Minimum listen length</h2>
+        </div>
+        <div class="chip-group" id="duration-chips">
+          <button class="chip" type="button" data-duration="0">Any</button>
+          <button class="chip active" type="button" data-duration="60">1+ min</button>
+          <button class="chip" type="button" data-duration="300">5+ min</button>
+          <button class="chip" type="button" data-duration="600">10+ min</button>
+          <button class="chip" type="button" data-duration="1800">30+ min</button>
+        </div>
+      </section>
+
+      <section id="results-section" class="section-block section-results">
+        <div class="section-heading">
+          <span class="section-kicker">Results</span>
+          <h2>Playable recordings</h2>
+        </div>
+        <div id="results-header" class="results-header"></div>
+        <div id="results-loading" class="status-card hidden">
+          <div class="spinner" aria-hidden="true"></div>
+          <span>Searching the field recordings API...</span>
+        </div>
+        <div id="results-error" class="status-card status-error hidden" role="alert"></div>
+        <div id="results-empty" class="empty-state">
+          <strong>Start with a scene chip or set a map pin.</strong>
+          <span>
+            Searches can use keywords, types, minimum duration, or a radius around the point you drop on the map.
+          </span>
+        </div>
+        <div id="results-list" class="results-list"></div>
+      </section>
+    </div>
+  </aside>
+
+  <section id="track-overlay" class="hidden" aria-live="polite">
+    <button id="overlay-close" type="button" class="icon-btn" aria-label="Close details">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="overlay-eyebrow">Now listening</div>
+    <h2 id="overlay-title"></h2>
+    <div id="overlay-details"></div>
+    <div class="overlay-actions">
+      <button id="overlay-similar" type="button" class="btn btn-primary">Find Similar</button>
+    </div>
+  </section>
+
+  <div id="player" class="hidden">
+    <div class="player-accent" aria-hidden="true"></div>
+    <div id="player-info">
+      <div id="player-title">No track loaded</div>
+      <div id="player-provider"></div>
+    </div>
+    <div id="player-progress-wrap">
+      <input id="player-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Playback position">
+    </div>
+    <div id="player-time">
+      <span id="player-current">0:00</span>
+      <span id="player-duration">0:00</span>
+    </div>
+    <div id="player-controls">
+      <button id="play-pause-btn" type="button" class="icon-btn icon-btn-solid" aria-label="Play or pause">
+        <svg id="play-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 5.5v13l10-6.5z"/>
+        </svg>
+        <svg id="pause-icon" class="hidden" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 5h4v14H7zm6 0h4v14h-4z"/>
+        </svg>
+      </button>
+      <button id="player-close" type="button" class="icon-btn" aria-label="Close player">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <div id="upload-modal" class="hidden" aria-hidden="true">
+    <div id="upload-backdrop"></div>
+    <div id="upload-form-wrap" role="dialog" aria-modal="true" aria-labelledby="upload-title-heading">
+      <div class="upload-heading">
+        <div>
+          <div class="eyebrow">Upload</div>
+          <h2 id="upload-title-heading">Add your own field recording</h2>
+        </div>
+        <button id="upload-close" type="button" class="icon-btn" aria-label="Close upload form">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p class="upload-intro">
+        Files are sent directly to <code>field-recordings-api.ashtarchris.workers.dev</code> and appear under the
+        shared search index.
+      </p>
+      <form id="upload-form">
+        <label class="form-field">
+          <span>Audio file</span>
+          <input id="upload-file" type="file" accept="audio/*" required>
+          <small id="upload-file-meta" class="field-note">MP3, WAV, M4A, or any browser-supported audio file.</small>
+        </label>
+
+        <label class="form-field">
+          <span>Title</span>
+          <input id="upload-title" type="text" placeholder="Morning birds behind the marina">
+        </label>
+
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Species</span>
+            <input id="upload-species" type="text" placeholder="Common loon">
+          </label>
+          <label class="form-field">
+            <span>Date recorded</span>
+            <input id="upload-date" type="date">
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span>Tags</span>
+          <input id="upload-tags" type="text" placeholder="birds, harbor, dawn, fog">
+        </label>
+
+        <label class="form-field">
+          <span>Notes</span>
+          <textarea id="upload-notes" rows="3" placeholder="Wind conditions, mic setup, distance from subject, or any context worth preserving."></textarea>
+        </label>
+
+        <div class="upload-location-block">
+          <div class="upload-location-header">
+            <span>Location</span>
+            <div class="location-toolbar">
+              <button id="upload-gps" type="button" class="chip chip-action">Use GPS</button>
+              <button id="upload-clear-location" type="button" class="chip chip-action">Clear</button>
+            </div>
+          </div>
+          <div class="form-grid form-grid-tight">
+            <label class="form-field">
+              <span>Latitude</span>
+              <input id="upload-lat" type="text" inputmode="decimal" placeholder="44.6488">
+            </label>
+            <label class="form-field">
+              <span>Longitude</span>
+              <input id="upload-lng" type="text" inputmode="decimal" placeholder="-63.5752">
+            </label>
+          </div>
+          <div id="upload-map"></div>
+        </div>
+
+        <div id="upload-progress" class="status-card hidden">
+          <div class="spinner" aria-hidden="true"></div>
+          <span>Uploading your recording...</span>
+        </div>
+
+        <div class="modal-actions">
+          <button id="upload-cancel" type="button" class="btn btn-secondary">Cancel</button>
+          <button id="upload-submit" type="submit" class="btn btn-primary">Upload recording</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

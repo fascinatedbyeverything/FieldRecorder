@@ -1,0 +1,21 @@
+{
+  "name": "field-recorder-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "syntax": "node --check public/app.js",
+    "check": "npm run syntax && npm run typecheck",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "smoke": "node scripts/smoke-web.js",
+    "dry-run": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.0.0"
+  }
+}
