@@ -21,7 +21,7 @@ final class AudioPlayer {
         try? AVAudioSession.sharedInstance().setActive(true)
         #endif
 
-        let url = URL(string: "\(APIClient.baseURL)\(recording.stream_url)")!
+        let url = URL(string: "\(APIClient.defaultBaseURL.absoluteString)\(recording.stream_url)")!
         let item = AVPlayerItem(url: url)
         player = AVPlayer(playerItem: item)
 

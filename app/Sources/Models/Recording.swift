@@ -1,7 +1,7 @@
 import Foundation
 import CoreLocation
 
-struct Recording: Codable, Identifiable, Hashable {
+struct Recording: Codable, Identifiable, Hashable, Sendable {
     let id: String
     let title: String
     let provider: String

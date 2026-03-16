@@ -1,6 +1,6 @@
 import Foundation
 
-struct CuratedScene: Identifiable {
+struct CuratedScene: Identifiable, Hashable, Sendable {
     let id = UUID()
     let name: String
     let query: String
